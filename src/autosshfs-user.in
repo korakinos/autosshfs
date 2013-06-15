@@ -90,17 +90,17 @@ case "$1" in
   add)
     gpasswd -a $username $GROUP
     create_ssh_wrapper
-    if grep "^$mountroot" /etc/auto.master 2>/dev/null
+    if grep "^$mountroot" /etc/autofs/auto.master 2>/dev/null
     then
-      sed -e "s#${mountroot}.*#$master_line#" -i /etc/auto.master
+      sed -e "s#${mountroot}.*#$master_line#" -i /etc/autofs/auto.master
     else
-      echo "$master_line" >> /etc/auto.master
+      echo "$master_line" >> /etc/autofs/auto.master
     fi
     ;;
   del)
     rm -f $SSH_WRAPPER
     gpasswd -d $username $GROUP
-    sed -e "s#${mountroot}.*##" -i /etc/auto.master
+    sed -e "s#${mountroot}.*##" -i /etc/autofs/auto.master
     ;;
   *)
     usage

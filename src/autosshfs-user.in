@@ -108,4 +108,4 @@ case "$1" in
     ;;
 esac
 
-restart autofs 2>/dev/null || /etc/init.d/autofs restart
+restart autofs 2>/dev/null || /etc/init.d/autofs restart 2>/dev/null || /etc/rc.d/autofs restart 2>/dev/null || systemctl restart autofs 2>/dev/null 
